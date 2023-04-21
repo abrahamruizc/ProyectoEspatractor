@@ -7,6 +7,7 @@ const DB = require('./config/db');
 // iniciamos la base de datos
 DB();
 
+app.use(cors());
 app.use(express.json());
 
 app.use('/api', require('./routes/user.router'));
