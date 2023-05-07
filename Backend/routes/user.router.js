@@ -7,12 +7,33 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 
-router.post('/crear', async (req, res) => {
+router.post('/crearAdministrativo', async (req, res) => {
     const { nombre_usuario, rol, nombre, apellido1, apellido2, contrasena} = req.body;
     const newUser = new User({nombre_usuario, rol, nombre, apellido1, apellido2, contrasena});
     console.log(newUser);
     const user = await User.findOne({nombre_usuario});
     if(user) return res.status(401).send('El nombre de usuario Ya esta Cogido');
+    if(newUser.nombre_usuario.trim().length === 0 || 
+        newUser.nombre.trim().length === 0 || 
+        newUser.apellido1.trim().length === 0 || 
+        newUser.contrasena.trim().length === 0) return res.status(401).send('no puedes dejar campos vacios');
+    await newUser.save();
+
+    const token = jwt.sign({_id: newUser._id }, SECRET_KEY);
+    res.status(200).json({token});
+});
+
+router.post('/crearMecanico', async (req, res) => {
+    const { nombre_usuario, rol, nombre, apellido1, apellido2, contrasena, DNI} = req.body;
+    const newUser = new User({nombre_usuario, rol, nombre, apellido1, apellido2, contrasena, DNI});
+    console.log(newUser);
+    const user = await User.findOne({nombre_usuario});
+    if(user) return res.status(401).send('El nombre de usuario Ya esta Cogido');
+    if(newUser.nombre_usuario.trim().length === 0 || 
+        newUser.nombre.trim().length === 0 || 
+        newUser.apellido1.trim().length === 0 || 
+        newUser.contrasena.trim().length === 0 ||
+        newUser.DNI.trim().length === 0 ) return res.status(401).send('no puedes dejar campos vacios');
     await newUser.save();
 
     const token = jwt.sign({_id: newUser._id }, SECRET_KEY);

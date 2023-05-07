@@ -17,6 +17,13 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AdministradorComponent } from './components/administrador/administrador.component';
+import { InicioNoRegistradoComponent } from './components/inicio-no-registrado/inicio-no-registrado.component';
+import { SkeletonAdministradorComponent } from './layout/skeleton-administrador/skeleton-administrador.component';
+import { HeaderAdministradorComponent } from './layout/header-administrador/header-administrador.component';
+import { NavigationAdministradorComponent } from './layout/navigation-administrador/navigation-administrador.component';
+import { AdministradorCrearAdministrativoComponent } from './components/administrador-crear-administrativo/administrador-crear-administrativo.component';
+import { AdministradorCrearMecanicoComponent } from './components/administrador-crear-mecanico/administrador-crear-mecanico.component';
+
 
 
 
@@ -28,7 +35,13 @@ import { AdministradorComponent } from './components/administrador/administrador
     SkeletonComponent,
     HeaderComponent,
     LoginComponent,
-    AdministradorComponent
+    AdministradorComponent,
+    InicioNoRegistradoComponent,
+    SkeletonAdministradorComponent,
+    HeaderAdministradorComponent,
+    NavigationAdministradorComponent,
+    AdministradorCrearAdministrativoComponent,
+    AdministradorCrearMecanicoComponent
   ],
   imports: [
     BrowserModule,

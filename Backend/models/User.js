@@ -23,12 +23,15 @@ const user = new Schema({
         required: true
     },
     apellido2: {
-        type: String,
-        required: true
+        type: String
     },
     contrasena: {
         type: String,
         required: true
+    },
+    DNI: {
+        type: String,
+        required: false
     }
 }, {
     timestamps: true

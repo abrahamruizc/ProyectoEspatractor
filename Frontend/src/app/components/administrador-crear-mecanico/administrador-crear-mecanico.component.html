@@ -1,0 +1,45 @@
+<h1 class="text-center mb-3">PANEL DE CREACIÓN DE MECÁNICO</h1>
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-header text-center text-warning fw-bold">
+            NUEVO ADMINISTRATIVO:
+        </div>
+        <div class="card-body text-center">
+            <form (submit)="creado()">
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="user.nombre_usuario" name="Nombre Usuario" class="form-control" placeholder="Nombre Usuario" required autofocus>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" [(ngModel)]="user.DNI"  name="DNI" class="form-control" placeholder="DNI" required>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" [(ngModel)]="user.nombre"  name="Nombre" class="form-control" placeholder="Nombre" required>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" [(ngModel)]="user.apellido1"  name="Apellido1" class="form-control" placeholder="Apellido1" required>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" [(ngModel)]="user.apellido2" name="Apellido2" class="form-control" placeholder="Apellido2" required>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="password" [(ngModel)]="user.contrasena" name="Contraseña" class="form-control" placeholder="Contraseña" required>
+                </div>
+                <div class="row">
+
+                    <div class="col">
+                        <button class="btn btn-warning btn-block mt-3">
+                            Crear
+                        </button>
+                    </div>
+                    
+                    <div class="col">
+                        <button class="btn btn-danger btn-block mt-3" onclick="location.href='/Administrador'">
+                            Cancelar
+                        </button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
