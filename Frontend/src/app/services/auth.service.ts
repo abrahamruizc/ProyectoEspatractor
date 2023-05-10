@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
+import { listaAdministrativos, listaMecanicos } from '../models/usuarios.interface';
+import { Observable } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +35,13 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
+  getAdministrativos(rol:string):Observable<listaAdministrativos[]>{
+    return this.http.get<listaAdministrativos[]>((this.URL + '/rol/' + rol));
+  }
+
+  getMecanicos(rol:string):Observable<listaMecanicos[]>{
+    return this.http.get<listaMecanicos[]>((this.URL + '/rol/' + rol));
+  }
 
   getToken() {
     return localStorage.getItem('token');

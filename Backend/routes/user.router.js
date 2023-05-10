@@ -55,8 +55,15 @@ router.post('/login', async (req, res) => {
 
 	const token = jwt.sign({_id: user._id}, SECRET_KEY);
 
-    return res.status(200).json({token});
+    return res.status(200).json({token, rol: user.rol});
 });
+
+
+router.get("/rol/:rol", verifyToken, async (req, res) => {
+    const user = await User.find({rol: req.params.rol});
+    return res.status(200).json(user);
+});
+
 
 router.get('/tasks', (req, res) => {
     res.json([

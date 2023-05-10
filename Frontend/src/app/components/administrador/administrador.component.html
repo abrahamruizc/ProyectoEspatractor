@@ -1,10 +1,50 @@
     <div class="row justify-content-md-center">
         <div class="bg-body-tertiary col-md-5  izquierda p-2 me-5 rounded shadow-sm">
             <h4 class="border-bottom pb-2 mb-0">ADMINISTRATIVOS<a href="/Administrador/CrearAdministrativo"><img class="float-end" src="assets/img/icons/mas.png"></a></h4>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido1</th>
+                    <th scope="col">Apellido2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let administrativos of Administrativos ">
+                    <td>{{ administrativos.nombre_usuario }}</td>
+                    <td>{{ administrativos.nombre }}</td>
+                    <td>{{ administrativos.apellido1 }}</td>
+                    <td>{{ administrativos.apellido2 }}</td>
+                  </tr>
+                 
+                </tbody>
+              </table>
         </div>
         
     
         <div class="bg-body-tertiary col-md-5  derecha  p-2 rounded shadow-sm">
             <h4 class="border-bottom pb-2 mb-0">MECÁNICOS<a href="/Administrador/CrearMecanico"><img class="float-end" src="assets/img/icons/mas.png"></a></h4>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido1</th>
+                    <th scope="col">Apellido2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let mecanicos of Mecanicos ">
+                    <td>{{ mecanicos.DNI }}</td>
+                    <td>{{ mecanicos.nombre_usuario }}</td>
+                    <td>{{ mecanicos.nombre }}</td>
+                    <td>{{ mecanicos.apellido1 }}</td>
+                    <td>{{ mecanicos.apellido2 }}</td>
+                  </tr>
+                 
+                </tbody>
+              </table>
         </div>
     </div>

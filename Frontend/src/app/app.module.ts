@@ -19,10 +19,15 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AdministradorComponent } from './components/administrador/administrador.component';
 import { InicioNoRegistradoComponent } from './components/inicio-no-registrado/inicio-no-registrado.component';
 import { SkeletonAdministradorComponent } from './layout/skeleton-administrador/skeleton-administrador.component';
-import { HeaderAdministradorComponent } from './layout/header-administrador/header-administrador.component';
-import { NavigationAdministradorComponent } from './layout/navigation-administrador/navigation-administrador.component';
+import { SkeletonAdministrativoComponent } from './layout/skeleton-administrativo/skeleton-administrativo.component';
+import { SkeletonMecanicoComponent } from './layout/skeleton-mecanico/skeleton-mecanico.component';
+import { HeaderUsuarioComponent } from './layout/header-usuario/header-usuario.component';
+import { NavigationVacioComponent } from './layout/navigation-vacio/navigation-vacio.component';
 import { AdministradorCrearAdministrativoComponent } from './components/administrador-crear-administrativo/administrador-crear-administrativo.component';
 import { AdministradorCrearMecanicoComponent } from './components/administrador-crear-mecanico/administrador-crear-mecanico.component';
+import { AdministrativoComponent } from './components/administrativo/administrativo.component';
+import { MecanicoComponent } from './components/mecanico/mecanico.component';
+
 
 
 
@@ -38,10 +43,14 @@ import { AdministradorCrearMecanicoComponent } from './components/administrador-
     AdministradorComponent,
     InicioNoRegistradoComponent,
     SkeletonAdministradorComponent,
-    HeaderAdministradorComponent,
-    NavigationAdministradorComponent,
     AdministradorCrearAdministrativoComponent,
-    AdministradorCrearMecanicoComponent
+    AdministradorCrearMecanicoComponent,
+    NavigationVacioComponent,
+    HeaderUsuarioComponent,
+    SkeletonAdministrativoComponent,
+    SkeletonMecanicoComponent,
+    AdministrativoComponent,
+    MecanicoComponent
   ],
   imports: [
     BrowserModule,
