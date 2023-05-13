@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
-import { listaAdministrativos, listaMecanicos } from '../models/usuarios.interface';
+import { listaAdministrativos, listaMecanicos, AdministrativoI } from '../models/usuarios.interface';
 import { Observable } from 'rxjs';
 
 
@@ -33,6 +33,10 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['']);
+  }
+
+  delete(nombre_usuario: string) {
+    return this.http.delete(`${this.URL}/delete/${nombre_usuario}`);
   }
 
   getAdministrativos(rol:string):Observable<listaAdministrativos[]>{

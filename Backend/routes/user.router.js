@@ -7,7 +7,7 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 
-router.post('/crearAdministrativo', async (req, res) => {
+router.post('/crearAdministrativo', verifyToken, async (req, res) => {
     const { nombre_usuario, rol, nombre, apellido1, apellido2, contrasena} = req.body;
     const newUser = new User({nombre_usuario, rol, nombre, apellido1, apellido2, contrasena});
     console.log(newUser);
@@ -23,7 +23,7 @@ router.post('/crearAdministrativo', async (req, res) => {
     res.status(200).json({token});
 });
 
-router.post('/crearMecanico', async (req, res) => {
+router.post('/crearMecanico', verifyToken, async (req, res) => {
     const { nombre_usuario, rol, nombre, apellido1, apellido2, contrasena, DNI} = req.body;
     const newUser = new User({nombre_usuario, rol, nombre, apellido1, apellido2, contrasena, DNI});
     console.log(newUser);
@@ -62,6 +62,13 @@ router.post('/login', async (req, res) => {
 router.get("/rol/:rol", verifyToken, async (req, res) => {
     const user = await User.find({rol: req.params.rol});
     return res.status(200).json(user);
+});
+
+router.delete("/delete/:nombre_usuario", verifyToken, async (req, res) => {
+    const nombre_usuario = req.params.nombre_usuario;
+    const user = await User.findOneAndDelete({nombre_usuario});
+    if (user) return res.status(200).json('Se ha borrado el usuario correctamente');
+    if (!user) res.status(404).json('No se ha encontrado el usuario a borrar');
 });
 
 
@@ -133,5 +140,72 @@ async function verifyToken(req, res, next) {
 		return res.status(401).send('Unauhtorized Request');
 	}
 }
+
+
+
+/**
+ * PETICIONES PARA CARGAR DATOS EN LA BBDD PARA PROBAR FUNCIONALIDADES NO SE USAN EN LAS PANTALLAS
+ */
+
+router.post('/crearAdministrativos', async (req, res) => {
+    const usuarios = req.body; // Array de usuarios a insertar
+    const nuevosUsuarios = [];
+  
+    for (const usuario of usuarios) {
+      const { nombre_usuario, rol, nombre, apellido1, apellido2, contrasena } = usuario;
+      const newUser = new User({ nombre_usuario, rol, nombre, apellido1, apellido2, contrasena });
+  
+      const user = await User.findOne({ nombre_usuario });
+      if (user) return res.status(401).send(`El nombre de usuario ${nombre_usuario} ya está en uso`);
+  
+      if (newUser.nombre_usuario.trim().length === 0 || 
+          newUser.nombre.trim().length === 0 || 
+          newUser.apellido1.trim().length === 0 || 
+          newUser.contrasena.trim().length === 0) {
+        return res.status(401).send('No puedes dejar campos vacíos');
+      }
+  
+      nuevosUsuarios.push(newUser);
+    }
+  
+    await User.insertMany(nuevosUsuarios);
+  
+    res.status(200).json({ message: 'Usuarios insertados correctamente' });
+});
+
+router.post('/crearMecanicos', async (req, res) => {
+    const users = req.body;
+    
+    if (!Array.isArray(users)) {
+      return res.status(400).send('Se esperaba un arreglo de usuarios');
+    }
+  
+    const insertedUsers = [];
+  
+    for (const userData of users) {
+      const { nombre_usuario, rol, nombre, apellido1, apellido2, contrasena, DNI } = userData;
+      const newUser = new User({ nombre_usuario, rol, nombre, apellido1, apellido2, contrasena, DNI });
+      const user = await User.findOne({ nombre_usuario });
+  
+      if (user) {
+        return res.status(401).send(`El nombre de usuario '${nombre_usuario}' ya está en uso`);
+      }
+  
+      if (
+        newUser.nombre_usuario.trim().length === 0 ||
+        newUser.nombre.trim().length === 0 ||
+        newUser.apellido1.trim().length === 0 ||
+        newUser.contrasena.trim().length === 0 ||
+        newUser.DNI.trim().length === 0
+      ) {
+        return res.status(401).send('No puedes dejar campos vacíos');
+      }
+  
+      await newUser.save();
+      insertedUsers.push(newUser);
+    }
+  
+    res.status(200).json({ message: 'Usuarios insertados correctamente' });
+});
 
 module.exports = router;

@@ -14,6 +14,8 @@ import { AdministradorCrearAdministrativoComponent } from './components/administ
 import { AdministradorCrearMecanicoComponent } from './components/administrador-crear-mecanico/administrador-crear-mecanico.component';
 import { AdministrativoComponent } from './components/administrativo/administrativo.component';
 import { MecanicoComponent } from './components/mecanico/mecanico.component';
+import { AdministradorModificarMecanicoComponent } from './components/administrador-modificar-mecanico/administrador-modificar-mecanico.component';
+import { AdministradorModificarAdministrativoComponent } from './components/administrador-modificar-administrativo/administrador-modificar-administrativo.component';
 
 const routes: Routes = [
   {
@@ -31,7 +33,9 @@ const routes: Routes = [
     children: [
       { path: '', component: AdministradorComponent },
       { path: 'CrearAdministrativo', component: AdministradorCrearAdministrativoComponent },
-      { path: 'CrearMecanico', component: AdministradorCrearMecanicoComponent }
+      { path: 'CrearMecanico', component: AdministradorCrearMecanicoComponent },
+      { path: 'ModificarAdministrativo', component: AdministradorModificarAdministrativoComponent },
+      { path: 'ModificarMecanico', component: AdministradorModificarMecanicoComponent }
     ]
   },{
     path: 'Administrativo',

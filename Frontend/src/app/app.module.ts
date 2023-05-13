@@ -28,7 +28,9 @@ import { AdministradorCrearMecanicoComponent } from './components/administrador-
 import { AdministrativoComponent } from './components/administrativo/administrativo.component';
 import { MecanicoComponent } from './components/mecanico/mecanico.component';
 
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { AdministradorModificarAdministrativoComponent } from './components/administrador-modificar-administrativo/administrador-modificar-administrativo.component';
+import { AdministradorModificarMecanicoComponent } from './components/administrador-modificar-mecanico/administrador-modificar-mecanico.component';
 
 
 
@@ -50,7 +52,9 @@ import { MecanicoComponent } from './components/mecanico/mecanico.component';
     SkeletonAdministrativoComponent,
     SkeletonMecanicoComponent,
     AdministrativoComponent,
-    MecanicoComponent
+    MecanicoComponent,
+    AdministradorModificarAdministrativoComponent,
+    AdministradorModificarMecanicoComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,8 @@ import { MecanicoComponent } from './components/mecanico/mecanico.component';
     SharedModule,
     CoreModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     AuthGuard,
