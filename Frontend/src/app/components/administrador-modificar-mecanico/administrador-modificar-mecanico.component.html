@@ -1,1 +1,52 @@
-<p>administrador-modificar-mecanico works!</p>
+<div class="row">
+    <div class="col-md-6">
+      <h4>Datos de mecánico a modificar</h4>
+      <p><strong>DNI:</strong> {{ usuarioSeleccionado.dni }}</p>
+      <p><strong>Nombre de usuario:</strong> {{ usuarioSeleccionado.nombre_usuario }}</p>
+      <p><strong>Nombre:</strong> {{ usuarioSeleccionado.nombre }}</p>
+      <p><strong>Apellido 1:</strong> {{ usuarioSeleccionado.apellido1 }}</p>
+      <p><strong>Apellido 2:</strong> {{ usuarioSeleccionado.apellido2 }}</p>
+    </div>
+    <div class="col-md-6">
+      <form [formGroup]="formulario" (ngSubmit)="submitFormulario()">
+        <div class="form-group">
+          <label for="dni">DNI</label>
+          <input type="text" class="form-control" id="dni" formControlName="dni">
+        </div>
+  
+        <div class="form-group">
+          <label for="nombre_usuario">Nombre de usuario</label>
+          <input type="text" class="form-control" id="nombre_usuario" formControlName="nombre_usuario">
+        </div>
+        
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" formControlName="nombre">
+        </div>
+        
+        <div class="form-group">
+          <label for="apellido1">Apellido 1</label>
+          <input type="text" class="form-control" id="apellido1" formControlName="apellido1">
+        </div>
+        
+        <div class="form-group">
+          <label for="apellido2">Apellido 2</label>
+          <input type="text" class="form-control" id="apellido2" formControlName="apellido2">
+        </div>
+        
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <input type="password" class="form-control" id="contrasena" formControlName="contrasena">
+        </div>
+        
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="aceptoTerminos" formControlName="aceptoTerminos">
+          <label class="form-check-label" for="aceptoTerminos">Confirmar modificación</label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="!formulario.controls['aceptoTerminos'].value">Modificar Mecánico</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  

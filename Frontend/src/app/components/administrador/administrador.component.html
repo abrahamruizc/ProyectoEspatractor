@@ -16,7 +16,7 @@
                     <td>{{ administrativos.nombre }}</td>
                     <td>{{ administrativos.apellido1 }}</td>
                     <td>{{ administrativos.apellido2 }}</td>
-                    <td><a routerLink="/Administrador/ModificarAdministrativo"><img class="float-end" src="assets/img/icons/escritura.png"></a></td>
+                    <td><a (click)="seleccionarUsuarioAdministrativo(administrativos.nombre_usuario, administrativos.nombre, administrativos.apellido1, administrativos.apellido2 )"><img class="float-end" src="assets/img/icons/escritura.png"></a></td>
                     <td><a (click)="delete(administrativos.nombre_usuario)"><img class="float-end" src="assets/img/icons/delete.png"></a></td>
                   </tr>
                 </tbody>
@@ -44,7 +44,7 @@
                     <td>{{ mecanicos.nombre }}</td>
                     <td>{{ mecanicos.apellido1 }}</td>
                     <td>{{ mecanicos.apellido2 }}</td>
-                    <td><a routerLink="/Administrador/ModificarMecanico"><img class="float-end" src="assets/img/icons/escritura.png"></a></td>
+                    <td><a (click)="seleccionarUsuarioMecanico(mecanicos.nombre_usuario, mecanicos.nombre, mecanicos.apellido1, mecanicos.apellido2, mecanicos.DNI)"><img class="float-end" src="assets/img/icons/escritura.png"></a></td>
                     <td><a (click)="delete(mecanicos.nombre_usuario)"><img class="float-end" src="assets/img/icons/delete.png"></a></td>
                   </tr>
                  

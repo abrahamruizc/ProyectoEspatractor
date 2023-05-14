@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
-import { listaAdministrativos, listaMecanicos, AdministrativoI } from '../../models/usuarios.interface';
+import { listaAdministrativos, listaMecanicos} from '../../models/usuarios.interface';
 import { HttpErrorResponse } from '@angular/common/http';
-
+//import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -14,12 +14,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AdministradorComponent implements OnInit {
 
+  constructor(private auth:AuthService, private router:Router) { }
+
   Administrativos:listaAdministrativos[] = [];
   Mecanicos:listaMecanicos[] = [];
 
   public page1!: number;
   public page2!: number;
-  constructor(private auth:AuthService, private router:Router) { }
+  
   
 
   ngOnInit(): void {
@@ -35,6 +37,30 @@ export class AdministradorComponent implements OnInit {
 
   }
 
+  seleccionarUsuarioAdministrativo(nombre_usuario: string, nombre: string, apellido1: string, apellido2: string) {
+  
+    this.router.navigate(['/Administrador/ModificarAdministrativo'], { 
+      queryParams: { 
+        nombre_usuario: nombre_usuario,
+        nombre: nombre,
+        apellido1: apellido1,
+        apellido2: apellido2
+      }
+    });
+    
+  }
+
+  seleccionarUsuarioMecanico(nombre_usuario: string, nombre: string, apellido1: string, apellido2: string, dni: string) {
+    this.router.navigate(['/Administrador/ModificarMecanico'], { 
+      queryParams: { 
+        nombre_usuario: nombre_usuario,
+        nombre: nombre,
+        apellido1: apellido1,
+        apellido2: apellido2,
+        dni: dni
+      }
+    });
+  }
   
   delete(nombre_usuario: string) {
     this.auth.delete(nombre_usuario).subscribe(

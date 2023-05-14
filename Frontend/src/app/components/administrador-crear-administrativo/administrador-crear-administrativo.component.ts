@@ -9,6 +9,11 @@ import { Router } from '@angular/router'
 })
 export class AdministradorCrearAdministrativoComponent implements OnInit {
 
+
+  cancelar() {
+    this.router.navigate(['/Administrador']);
+  }
+
   user = {
     nombre_usuario: '',
     rol: 'ADMINISTRATIVO',

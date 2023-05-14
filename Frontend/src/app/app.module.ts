@@ -31,6 +31,7 @@ import { MecanicoComponent } from './components/mecanico/mecanico.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AdministradorModificarAdministrativoComponent } from './components/administrador-modificar-administrativo/administrador-modificar-administrativo.component';
 import { AdministradorModificarMecanicoComponent } from './components/administrador-modificar-mecanico/administrador-modificar-mecanico.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -63,7 +64,8 @@ import { AdministradorModificarMecanicoComponent } from './components/administra
     CoreModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthGuard,

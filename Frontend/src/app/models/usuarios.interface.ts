@@ -13,14 +13,19 @@ export interface listaMecanicos {
     apellido2: string;
 }
 
-export interface AdministrativoI{
-    _id: string;
-    nombre_usuario: string;
-    rol: string;
+export interface datosAdministrativosModificar {
+    nuevo_nombre_usuario: string;
     nombre: string;
     apellido1: string;
     apellido2: string;
-    contrasena: string;
-    createdAt: string;
-    updatedAt: string;
+    nueva_contrasena: string;
+}
+
+export interface datosMecanicoModificar {
+    nuevo_nombre_usuario: string;
+    dni: string;
+    nombre: string;
+    apellido1: string;
+    apellido2: string;
+    nueva_contrasena: string;
 }
