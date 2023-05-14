@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { listaAdministrativos, listaMecanicos} from '../../models/usuarios.interface';
 import { HttpErrorResponse } from '@angular/common/http';
-//import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AdministradorComponent implements OnInit {
 
-  constructor(private auth:AuthService, private router:Router) { }
+  constructor(private auth:AuthService, private router:Router, private modalService: NgbModal) { }
 
   Administrativos:listaAdministrativos[] = [];
   Mecanicos:listaMecanicos[] = [];
@@ -35,6 +35,19 @@ export class AdministradorComponent implements OnInit {
       console.log(this.Mecanicos);
     });
 
+  }
+
+  openConfirmationModal(content: any, administrativo: listaAdministrativos) {
+    this.modalService.open(content).result.then(
+      (result) => {
+        if (result === 'confirm') {
+          this.delete(administrativo.nombre_usuario);
+        }
+      },
+      (reason) => {
+        console.log("se cierra el modal");
+      }
+    );
   }
 
   seleccionarUsuarioAdministrativo(nombre_usuario: string, nombre: string, apellido1: string, apellido2: string) {
