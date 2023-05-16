@@ -16,6 +16,7 @@ import { AdministrativoComponent } from './components/administrativo/administrat
 import { MecanicoComponent } from './components/mecanico/mecanico.component';
 import { AdministradorModificarMecanicoComponent } from './components/administrador-modificar-mecanico/administrador-modificar-mecanico.component';
 import { AdministradorModificarAdministrativoComponent } from './components/administrador-modificar-administrativo/administrador-modificar-administrativo.component';
+import { MapaComponent } from './components/mapa/mapa.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     pathMatch: 'prefix',
     children: [
       { path: 'login', component: LoginComponent },
-      { path: '', component: InicioNoRegistradoComponent }
+      { path: '', component: InicioNoRegistradoComponent },
+      { path: 'contacto', component: MapaComponent },
     ]
   },{
     path: 'Administrador',
