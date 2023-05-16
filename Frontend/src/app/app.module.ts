@@ -33,6 +33,7 @@ import { AdministradorModificarAdministrativoComponent } from './components/admi
 import { AdministradorModificarMecanicoComponent } from './components/administrador-modificar-mecanico/administrador-modificar-mecanico.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MapaComponent } from './components/mapa/mapa.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 
 
@@ -57,7 +58,8 @@ import { MapaComponent } from './components/mapa/mapa.component';
     MecanicoComponent,
     AdministradorModificarAdministrativoComponent,
     AdministradorModificarMecanicoComponent,
-    MapaComponent
+    MapaComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,

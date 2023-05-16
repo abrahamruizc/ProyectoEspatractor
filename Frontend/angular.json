@@ -17,6 +17,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "pbf",
+              "earcut",
+              "rbush",
+              "web-worker",
+              "xml-utils/get-attribute.js",
+              "xml-utils/find-tags-by-name.js"
+            ],
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
