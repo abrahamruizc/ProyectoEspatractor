@@ -14,6 +14,10 @@ export class AuthService {
   private URL = 'http://localhost:5000/api';
   constructor(private http: HttpClient, private router: Router) { }
 
+  enviarCorreo( cuerpo: {correo:string; asunto: string; contenido: string;}){
+    return this.http.post(this.URL + '/enviar-correo', cuerpo);
+  }
+
   crearUsuarioAdministrativo(user : {nombre_usuario: string; rol: string; nombre: string; apellido1: string; apellido2: string; contrasena: string;}){
     return this.http.post(this.URL + '/crearAdministrativo', user);
   }

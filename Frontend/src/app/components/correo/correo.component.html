@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form [formGroup]="formulario" (ngSubmit)="submitFormulario()">
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="correo" name="correo" formControlName="correo" placeholder="Ingrese su correo electrónico">
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">Asunto del correo</label>
+            <input type="text" class="form-control" id="asunto" name="asunto" formControlName="asunto" placeholder="Ingrese el asunto del correo">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Cuerpo del mensaje</label>
+            <textarea class="form-control" id="contenido" name="contenido" rows="5" formControlName="contenido"  placeholder="Ingrese el cuerpo del mensaje"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar correo</button>
+        </form>
+      </div>
+    </div>
+  </div>
