@@ -35,6 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { CorreoComponent } from './components/correo/correo.component';
+import { MaquinasReparadasComponent } from './components/maquinas-reparadas/maquinas-reparadas.component';
+import { NuevaReparacionComponent } from './components/nueva-reparacion/nueva-reparacion.component';
 
 
 
@@ -61,7 +63,9 @@ import { CorreoComponent } from './components/correo/correo.component';
     AdministradorModificarMecanicoComponent,
     MapaComponent,
     ContactoComponent,
-    CorreoComponent
+    CorreoComponent,
+    MaquinasReparadasComponent,
+    NuevaReparacionComponent
   ],
   imports: [
     BrowserModule,

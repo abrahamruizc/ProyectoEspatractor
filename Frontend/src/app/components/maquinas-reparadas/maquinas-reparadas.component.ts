@@ -3,11 +3,11 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-administrativo',
-  templateUrl: './administrativo.component.html',
-  styleUrls: ['./administrativo.component.scss']
+  selector: 'app-maquinas-reparadas',
+  templateUrl: './maquinas-reparadas.component.html',
+  styleUrls: ['./maquinas-reparadas.component.scss']
 })
-export class AdministrativoComponent {
+export class MaquinasReparadasComponent {
   reparaciones: any[] = [];
 
   constructor(private authService: AuthService, private router: Router) { }

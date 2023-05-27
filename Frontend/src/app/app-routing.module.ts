@@ -17,6 +17,8 @@ import { MecanicoComponent } from './components/mecanico/mecanico.component';
 import { AdministradorModificarMecanicoComponent } from './components/administrador-modificar-mecanico/administrador-modificar-mecanico.component';
 import { AdministradorModificarAdministrativoComponent } from './components/administrador-modificar-administrativo/administrador-modificar-administrativo.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { MaquinasReparadasComponent } from './components/maquinas-reparadas/maquinas-reparadas.component';
+import { NuevaReparacionComponent } from './components/nueva-reparacion/nueva-reparacion.component';
 
 const routes: Routes = [
   {
@@ -51,7 +53,9 @@ const routes: Routes = [
     component: SkeletonMecanicoComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: MecanicoComponent }
+      { path: '', component: MecanicoComponent },
+      { path: 'MaquinasReparadas', component: MaquinasReparadasComponent },
+      { path: 'NuevaReparacion', component: NuevaReparacionComponent }
     ]
   }
 ];

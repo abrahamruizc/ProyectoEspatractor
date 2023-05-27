@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
-import { listaAdministrativos, listaMecanicos, datosAdministrativosModificar, datosMecanicoModificar } from '../models/usuarios.interface';
+import { listaAdministrativos, listaMecanicos, datosAdministrativosModificar, datosMecanicoModificar, RespuestaCliente } from '../models/usuarios.interface';
 import { Observable } from 'rxjs';
 
 
@@ -11,8 +11,25 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
+  
   private URL = 'http://localhost:5000/api';
   constructor(private http: HttpClient, private router: Router) { }
+
+  obtenerReparaciones() {
+    return this.http.get<any[]>(this.URL + '/reparaciones');
+  }
+
+  crearCliente ( cuerpo:{nombre: string, telefono: string, correo_electronico: string} ): Observable<RespuestaCliente> {
+    return this.http.post<RespuestaCliente>(this.URL + '/crearCliente', cuerpo);
+  }
+
+  crearMaquina ( cuerpo:{referencia:string, horas_trabajo: Number, kilometros: Number, marca: string, modelo: string, ano_matriculacion: Date, tipo:string, clienteId: Object} ) {
+    return this.http.post(this.URL + '/crearMaquina', cuerpo);
+  }
+
+  crearReparacion ( cuerpo:{id_maquina:string, h_mano_de_obra:string, fecha_reparacion:string, precio_piezas:string, descripcion_reparacion:string, total:string} ): Observable<RespuestaCliente> {
+    return this.http.post<RespuestaCliente>(this.URL + '/crearReparacion', cuerpo);
+  }
 
   enviarCorreo( cuerpo: {correo:string; asunto: string; contenido: string;}){
     return this.http.post(this.URL + '/enviar-correo', cuerpo);

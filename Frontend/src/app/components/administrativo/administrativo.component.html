@@ -1,1 +1,24 @@
-<p>administrativo works!</p>
+<div class="d-flex justify-content-center">
+  <div class="scrollable-list">
+    <h2>Lista de Máquinas Reparadas</h2>
+    <button class="btn btn-primary">Generar Factura</button>
+    <div class="list-container">
+      
+      <a (click)="nuevaReparacion()">
+        <img class="float-end" src="assets/img/icons/google-plus.png">
+      </a>
+      <ul class="list-group">
+        <li *ngFor="let reparacion of reparaciones" class="list-group-item">
+          <input type="checkbox" class="float-start">
+          <p><strong>Número de Reparación:</strong> {{ reparacion.n_reparacion }}</p>
+          <p><strong>Fecha de Reparación:</strong> {{ reparacion.fecha_reparacion }}</p>
+          <p><strong>Referencia de la Máquina:</strong> {{ reparacion.id_maquina.referencia }}</p>
+          <p><strong>Mano de Obra:</strong> {{ reparacion.h_mano_de_obra }}</p>
+          <p><strong>Precio de Piezas:</strong> {{ reparacion.precio_piezas }}</p>
+          <p><strong>Total:</strong> {{ reparacion.total }}</p>
+          <img class="float-end" src="assets/img/icons/factura.png">
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

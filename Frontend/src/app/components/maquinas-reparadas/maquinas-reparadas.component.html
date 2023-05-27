@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center">
+  <div class="scrollable-list">
+    <h2>Lista de Máquinas Reparadas</h2>
+
+    <div class="list-container">
+      <a (click)="nuevaReparacion()">
+        <img class="float-end" src="assets/img/icons/google-plus.png">
+      </a>
+      <ul class="list-group">
+        <li *ngFor="let reparacion of reparaciones" class="list-group-item">
+          <p><strong>Número de Reparación:</strong> {{ reparacion.n_reparacion }}</p>
+          <p><strong>Mano de Obra:</strong> {{ reparacion.h_mano_de_obra }}</p>
+          <p><strong>Kilómetros:</strong> {{ reparacion.id_maquina.kilometros }}</p>
+          <p><strong>Horas de Trabajo:</strong> {{ reparacion.id_maquina.horas_trabajo }}</p>
+          <p><strong>Marca:</strong> {{ reparacion.id_maquina.marca }}</p>
+          <p><strong>Año de Matriculación:</strong> {{ reparacion.id_maquina.ano_matriculacion }}</p>
+          <p><strong>Nombre del Cliente:</strong> {{ reparacion.id_maquina.id_cliente.nombre }}</p>
+          <p><strong>Tipo:</strong> {{ reparacion.id_maquina.tipo }}</p>
+          <p><strong>Teléfono del Cliente:</strong> {{ reparacion.id_maquina.id_cliente.telefono }}</p>
+          <p><strong>Correo del Cliente:</strong> {{ reparacion.id_maquina.id_cliente.correo_electronico }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

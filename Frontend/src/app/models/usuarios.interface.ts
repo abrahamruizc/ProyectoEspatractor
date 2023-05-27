@@ -29,3 +29,7 @@ export interface datosMecanicoModificar {
     apellido2: string;
     nueva_contrasena: string;
 }
+
+export interface RespuestaCliente {
+    _id: string; 
+  }
