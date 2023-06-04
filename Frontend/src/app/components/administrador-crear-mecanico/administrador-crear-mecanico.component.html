@@ -1,43 +1,70 @@
 <h1 class="text-center mb-3">PANEL DE CREACIÓN DE MECÁNICO</h1>
 <div class="col-md-4 mx-auto">
-    <div class="card">
-        <div class="card-header text-center text-warning fw-bold">
-            NUEVO ADMINISTRATIVO:
-        </div>
-        <div class="card-body text-center">
-            <form (submit)="creado()">
-                <div class="form-group">
-                    <input type="text" [(ngModel)]="user.nombre_usuario" name="Nombre Usuario" class="form-control" placeholder="Nombre Usuario" required autofocus>
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" [(ngModel)]="user.DNI"  name="DNI" class="form-control" placeholder="DNI" required>
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" [(ngModel)]="user.nombre"  name="Nombre" class="form-control" placeholder="Nombre" required>
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" [(ngModel)]="user.apellido1"  name="Apellido1" class="form-control" placeholder="Apellido1" required>
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" [(ngModel)]="user.apellido2" name="Apellido2" class="form-control" placeholder="Apellido2" required>
-                </div>
-                <div class="form-group mt-3">
-                    <input type="password" [(ngModel)]="user.contrasena" name="Contraseña" class="form-control" placeholder="Contraseña" required>
-                </div>
-                <div class="row">
-
-                    <div class="col">
-                        <button class="btn btn-warning btn-block mt-3">
-                            Crear
-                        </button>
-                    </div>
-                    
-                    <div class="col">
-                        <button class="btn btn-danger btn-block mt-3" type="button" (click)="cancelar()">Cancelar</button>
-                    </div>
-                    
-                </div>
-            </form>
-        </div>
+  <div class="card">
+    <div class="card-header text-center text-warning fw-bold">
+      NUEVO MECÁNICO:
     </div>
+    <div class="card-body text-center">
+      <form [formGroup]="formulario" (submit)="creado()">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="nombre_usuario" placeholder="Nombre Usuario" required autofocus>
+          <small class="text-danger" *ngIf="formulario.get('nombre_usuario')?.invalid && (formulario.get('nombre_usuario')?.dirty || formulario.get('nombre_usuario')?.touched)">
+            El nombre de usuario es obligatorio.
+          </small>
+        </div>
+        <div class="form-group mt-3">
+            <input type="text" class="form-control" formControlName="DNI" placeholder="DNI" required>
+            <small class="text-danger" *ngIf="formulario.get('DNI')?.hasError('required') && (formulario.get('DNI')?.dirty || formulario.get('DNI')?.touched)">
+              El DNI es obligatorio.
+            </small>
+            <small class="text-danger" *ngIf="formulario.get('DNI')?.hasError('pattern') && (formulario.get('DNI')?.dirty || formulario.get('DNI')?.touched)">
+              El DNI debe tener 8 dígitos seguidos de una letra mayúscula.
+            </small>
+          </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre" required>
+          <small class="text-danger" *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.errors?.['required'] && (formulario.get('nombre')?.dirty || formulario.get('nombre')?.touched)">
+            El nombre es obligatorio.
+          </small>
+          <small class="text-danger" *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.errors?.['pattern'] && (formulario.get('nombre')?.dirty || formulario.get('nombre')?.touched)">
+            El nombre solo debe contener letras y espacios.
+          </small>
+        </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" formControlName="apellido1" placeholder="Primer Apellido" required>
+          <small class="text-danger" *ngIf="formulario.get('apellido1')?.invalid && formulario.get('apellido1')?.errors?.['required'] && (formulario.get('apellido1')?.dirty || formulario.get('apellido1')?.touched)">
+            El primer apellido es obligatorio.
+          </small>
+          <small class="text-danger" *ngIf="formulario.get('apellido1')?.invalid && formulario.get('apellido1')?.errors?.['pattern'] && (formulario.get('apellido1')?.dirty || formulario.get('apellido1')?.touched)">
+            El primer apellido solo debe contener letras y espacios.
+          </small>
+        </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" formControlName="apellido2" placeholder="Segundo Apellido">
+          <small class="text-danger" *ngIf="formulario.get('apellido2')?.invalid && formulario.get('apellido2')?.errors?.['pattern'] && (formulario.get('apellido2')?.dirty || formulario.get('apellido2')?.touched)">
+            El segundo apellido solo debe contener letras y espacios.
+          </small>
+        </div>
+        <div class="form-group mt-3">
+          <input type="password" class="form-control" formControlName="contrasena" placeholder="Contraseña" required>
+          <small class="text-danger" *ngIf="formulario.get('contrasena')?.invalid && formulario.get('contrasena')?.errors?.['required'] && (formulario.get('contrasena')?.dirty || formulario.get('contrasena')?.touched)">
+            La contraseña es obligatoria.
+          </small>
+          <small class="text-danger" *ngIf="formulario.get('contrasena')?.invalid && formulario.get('contrasena')?.errors?.['pattern'] && (formulario.get('contrasena')?.dirty || formulario.get('contrasena')?.touched)">
+            La contraseña solo debe contener letras mayúsculas, minúsculas, números y no debe contener espacios.
+          </small>
+        </div>
+        <div class="row">
+            <div class="col">
+              <button type="submit" [disabled]="formulario.invalid" class="btn btn-warning btn-block mt-3">
+                Crear
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger btn-block mt-3" (click)="cancelar()">Cancelar</button>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
 </div>

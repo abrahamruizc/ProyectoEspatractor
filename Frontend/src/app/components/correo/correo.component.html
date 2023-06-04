@@ -3,16 +3,20 @@
       <div class="col-lg-6">
         <form [formGroup]="formulario" (ngSubmit)="submitFormulario()">
           <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico</label>
+            <label for="email" class="form-label label-required">Correo electrónico</label>
             <input type="email" class="form-control" id="correo" name="correo" formControlName="correo" placeholder="Ingrese su correo electrónico">
+            <small *ngIf="formulario.get('correo')?.invalid && formulario.get('correo')?.touched" class="form-text text-danger">Campo obligatorio</small>
+            <small *ngIf="formulario.get('correo')?.errors?.['email']" class="form-text text-danger">Formato incorrecto</small>
           </div>
           <div class="mb-3">
-            <label for="subject" class="form-label">Asunto del correo</label>
+            <label for="subject" class="form-label label-required">Asunto del correo</label>
             <input type="text" class="form-control" id="asunto" name="asunto" formControlName="asunto" placeholder="Ingrese el asunto del correo">
+            <small *ngIf="formulario.get('asunto')?.invalid && formulario.get('asunto')?.touched" class="form-text text-danger">Campo obligatorio</small>
           </div>
           <div class="mb-3">
-            <label for="message" class="form-label">Cuerpo del mensaje</label>
+            <label for="message" class="form-label label-required">Cuerpo del mensaje</label>
             <textarea class="form-control" id="contenido" name="contenido" rows="5" formControlName="contenido"  placeholder="Ingrese el cuerpo del mensaje"></textarea>
+            <small *ngIf="formulario.get('contenido')?.invalid && formulario.get('contenido')?.touched" class="form-text text-danger">Campo obligatorio</small>
           </div>
           <button type="submit" class="btn btn-primary">Enviar correo</button>
         </form>

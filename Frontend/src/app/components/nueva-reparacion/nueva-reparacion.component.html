@@ -1,84 +1,135 @@
-<form [formGroup]="formulario" (submit)="crearReparacion(formulario.value)">
-    <div class="row">
-        <!-- Cliente -->
-        <div class="col">
-            <h3>Cliente</h3>
-            <div class="form-group">
-                <label for="nombre_cliente">Nombre del Cliente</label>
-                <input type="text" class="form-control" id="nombre_cliente" formControlName="nombre_cliente" required>
-            </div>
-            <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="text" class="form-control" id="telefono" formControlName="telefono" required>
-            </div>
-            <div class="form-group">
-                <label for="correo_electronico">Correo Electrónico</label>
-                <input type="email" class="form-control" id="correo_electronico" formControlName="correo_electronico"
-                    required>
-            </div>
-        </div>
-
-        <!-- Máquina -->
-        <div class="col">
-            <h3>Máquina</h3>
-            <div class="form-group">
-                <label for="horas_trabajo">referencia</label>
-                <input type="text" class="form-control" id="referencia" formControlName="referencia">
-            </div>
-            <div class="form-group">
-                <label for="horas_trabajo">Horas de Trabajo</label>
-                <input type="number" class="form-control" id="horas_trabajo" formControlName="horas_trabajo">
-            </div>
-            <div class="form-group">
-                <label for="kilometros">Kilómetros</label>
-                <input type="number" class="form-control" id="kilometros" formControlName="kilometros">
-            </div>
-            <div class="form-group">
-                <label for="marca">Marca</label>
-                <input type="text" class="form-control" id="marca" formControlName="marca">
-            </div>
-            <div class="form-group">
-                <label for="modelo">Modelo</label>
-                <input type="text" class="form-control" id="modelo" formControlName="modelo" required>
-            </div>
-            <div class="form-group">
-                <label for="ano_matriculacion">Año de Matriculación</label>
-                <input type="date" class="form-control" id="ano_matriculacion" formControlName="ano_matriculacion">
-            </div>
-            <div class="form-group">
-                <label for="tipo">Tipo</label>
-                <input type="text" class="form-control" id="tipo" formControlName="tipo">
-            </div>
-        </div>
-
-        <!-- Reparación -->
-        <div class="col">
-            <h3>Reparación</h3>
-            <div class="form-group">
-                <label for="h_mano_de_obra">Horas de Mano de Obra</label>
-                <input type="number" class="form-control" id="h_mano_de_obra" formControlName="h_mano_de_obra">
-            </div>
-            <div class="form-group">
-                <label for="fecha_reparacion">Fecha de Reparación</label>
-                <input type="date" class="form-control" id="fecha_reparacion" formControlName="fecha_reparacion">
-            </div>
-            <div class="form-group">
-                <label for="precio_piezas">Precio de Piezas</label>
-                <input type="number" class="form-control" id="precio_piezas" formControlName="precio_piezas">
-            </div>
-            <div class="form-group">
-                <label for="descripcion_reparacion">Descripción de la Reparación</label>
-                <textarea class="form-control" id="descripcion_reparacion" formControlName="descripcion_reparacion"
-                    rows="4"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="total">Total</label>
-                <input type="number" class="form-control" id="total" formControlName="total" required>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header text-center text-warning fw-bold">
+        <h4>Nueva Reparación</h4>
     </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Crear Reparación</button>
-        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+    <div class="card-body">
+        <form [formGroup]="formulario" (submit)="crearReparacion(formulario.value)">
+            <div class="row">
+                <!-- Cliente -->
+                <div class="col">
+                    <h3>Cliente</h3>
+                    <div class="form-group">
+                        <label for="nombre_cliente" class="label-required">Nombre del Cliente</label>
+                        <input type="text" class="form-control" id="nombre_cliente" formControlName="nombre_cliente"
+                            required>
+                        <small class="text-danger"
+                            *ngIf="formulario.get('nombre_cliente')?.hasError('required') && formulario.get('nombre_cliente')?.touched">
+                            El nombre del cliente es obligatorio.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono" class="label-required">Teléfono</label>
+                        <input type="text" class="form-control" id="telefono" formControlName="telefono" required>
+
+                        <small class="text-danger"
+                            *ngIf="formulario.get('telefono')?.hasError('required') && formulario.get('telefono')?.touched">
+                            El teléfono es obligatorio.
+                        </small>
+
+                        <small class="text-danger"
+                            *ngIf="formulario.get('telefono')?.hasError('pattern') && formulario.get('telefono')?.touched">
+                            El teléfono debe tener 9 dígitos.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo_electronico" class="label-required">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="correo_electronico"
+                            formControlName="correo_electronico" required>
+                        <small class="text-danger"
+                            *ngIf="formulario.get('correo_electronico')?.hasError('required') && formulario.get('correo_electronico')?.touched">
+                            El correo electrónico es obligatorio.
+                        </small>
+                        <small class="text-danger"
+                            *ngIf="formulario.get('correo_electronico')?.hasError('email') && formulario.get('correo_electronico')?.touched">
+                            El correo electrónico no es válido.
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Máquina -->
+                <div class="col">
+                    <h3>Máquina</h3>
+                    <div class="form-group">
+                        <label for="referencia" class="label-required">referencia</label>
+                        <input type="text" class="form-control" id="referencia" formControlName="referencia" required>
+                        <small class="text-danger"
+                            *ngIf="formulario.get('referencia')?.hasError('required') && formulario.get('referencia')?.touched">
+                            La referencia de la máquina es obligatoria.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="horas_trabajo">Horas de Trabajo</label>
+                        <input type="number" class="form-control" id="horas_trabajo" formControlName="horas_trabajo">
+                    </div>
+                    <div class="form-group">
+                        <label for="kilometros">Kilómetros</label>
+                        <input type="number" class="form-control" id="kilometros" formControlName="kilometros">
+                    </div>
+                    <div class="form-group">
+                        <label for="marca">Marca</label>
+                        <input type="text" class="form-control" id="marca" formControlName="marca">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo</label>
+                        <input type="text" class="form-control" id="modelo" formControlName="modelo">
+                    </div>
+                    <div class="form-group">
+                        <label for="ano_matriculacion">Año de Matriculación</label>
+                        <input type="date" class="form-control" id="ano_matriculacion"
+                            formControlName="ano_matriculacion">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo</label>
+                        <input type="text" class="form-control" id="tipo" formControlName="tipo">
+                    </div>
+                </div>
+
+                <!-- Reparación -->
+                <div class="col">
+                    <h3>Reparación</h3>
+                    <div class="form-group">
+                        <label for="h_mano_de_obra" class="label-required">Horas de Mano de Obra</label>
+                        <input type="number" class="form-control" id="h_mano_de_obra" formControlName="h_mano_de_obra"
+                            (input)="calcularTotal()" required>
+                        <small class="text-danger"
+                            *ngIf="formulario.get('h_mano_de_obra')?.hasError('required') && formulario.get('h_mano_de_obra')?.touched">
+                            Es necesario indicar la Mano de obra.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_reparacion" class="label-required">Fecha de Reparación</label>
+                        <input type="date" class="form-control" id="fecha_reparacion" formControlName="fecha_reparacion"
+                            required>
+                        <small class="text-danger"
+                            *ngIf="formulario.get('fecha_reparacion')?.hasError('required') && formulario.get('fecha_reparacion')?.touched">
+                            Es necesario indicar la fecha de la reparación.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="precio_piezas" class="label-required">Precio de Piezas</label>
+                        <input type="number" class="form-control" id="precio_piezas" formControlName="precio_piezas"
+                            (input)="calcularTotal()" required>
+                        <small class="text-danger"
+                            *ngIf="formulario.get('precio_piezas')?.hasError('required') && formulario.get('precio_piezas')?.touched">
+                            Es necesario indicar el precio de las piezas.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion_reparacion">Descripción de la Reparación</label>
+                        <textarea class="form-control" id="descripcion_reparacion"
+                            formControlName="descripcion_reparacion" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="total">Total</label>
+                        <input type="number" class="form-control" id="total" formControlName="total" required readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group d-flex mt-5 justify-content-center">
+                <button type="submit" [disabled]="formulario.invalid" class="btn btn-warning mx-5">Crear
+                    Reparación</button>
+                <button type="button" class="btn btn-danger mx-5" (click)="cancelar()">Cancelar</button>
+            </div>
+        </form>
     </div>
-</form>
+</div>

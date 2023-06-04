@@ -16,26 +16,37 @@ export class NuevaReparacionComponent implements OnInit {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      nombre_cliente: [''],
-      telefono: [''],
-      correo_electronico: [''],
-      referencia: [''],
-      horas_trabajo: [''], 
+      nombre_cliente: ['', Validators.required],
+      telefono: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
+      correo_electronico: ['', [Validators.required, Validators.email]],
+      referencia: ['', Validators.required],
+      horas_trabajo: [''],
       kilometros: [''],
       marca: [''],
       modelo: [''],
       ano_matriculacion: [''],
       tipo: [''],
-      h_mano_de_obra: [''],
-      fecha_reparacion: [''],
-      precio_piezas: [''],
+      h_mano_de_obra: ['', Validators.required],
+      fecha_reparacion: ['', Validators.required],
+      precio_piezas: ['', Validators.required],
       descripcion_reparacion: [''],
       total: ['']
     });
   }
   
+  calcularTotal() {
+    const horasManoDeObra = this.formulario.get('h_mano_de_obra')?.value;
+    const precioPiezas = this.formulario.get('precio_piezas')?.value;
+  
+    // Realiza el cálculo
+    const total = horasManoDeObra * 30 + precioPiezas;
+  
+    // Actualiza el valor del campo "Total"
+    this.formulario.get('total')?.setValue(total);
+  }
+
   cancelar() {
-    this.router.navigate(['/Mecanico']);
+    this.router.navigate(['/Mecanico/MaquinasReparadas']);
   }
 
   crearReparacion(formulario: any) {
@@ -82,6 +93,7 @@ export class NuevaReparacionComponent implements OnInit {
             this.authService.crearReparacion(reparacion).subscribe(
               (respuestaReparacion) => {
                 console.log('Reparación creada:', respuestaReparacion);
+                this.router.navigate(['/Mecanico/MaquinasReparadas']);
                 // Realizar acciones adicionales después de crear la reparación
               },
               (errorReparacion) => {

@@ -42,12 +42,12 @@ export class AdministradorModificarMecanicoComponent implements OnInit {
       this.nuevoNombreUsuario = this.usuarioSeleccionado.nombre_usuario;
       
       this.formulario = this.formBuilder.group({
-        dni: [],
-        nombre_usuario: [],
-        nombre: [],
-        apellido1: [],
-        apellido2: [],
-        contrasena: [],
+        dni: ['', Validators.pattern(/^\d{8}[A-Z]$/)],
+        nombre_usuario: [''],
+        nombre: ['', Validators.pattern('^[a-zA-Z ]+$')],
+        apellido1: ['', Validators.pattern('^[a-zA-Z ]+$')],
+        apellido2: ['', Validators.pattern('^[a-zA-Z ]+$')],
+        contrasena: ['', Validators.pattern('^[a-zA-Z0-9!@#$%^&*()]+$')],
         aceptoTerminos: [false, Validators.requiredTrue]
       });
     });

@@ -37,6 +37,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { CorreoComponent } from './components/correo/correo.component';
 import { MaquinasReparadasComponent } from './components/maquinas-reparadas/maquinas-reparadas.component';
 import { NuevaReparacionComponent } from './components/nueva-reparacion/nueva-reparacion.component';
+import { FooterUsuarioComponent } from './layout/footer-usuario/footer-usuario.component';
 
 
 
@@ -65,7 +66,8 @@ import { NuevaReparacionComponent } from './components/nueva-reparacion/nueva-re
     ContactoComponent,
     CorreoComponent,
     MaquinasReparadasComponent,
-    NuevaReparacionComponent
+    NuevaReparacionComponent,
+    FooterUsuarioComponent
   ],
   imports: [
     BrowserModule,

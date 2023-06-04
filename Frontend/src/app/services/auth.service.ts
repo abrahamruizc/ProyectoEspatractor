@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders  } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { listaAdministrativos, listaMecanicos, datosAdministrativosModificar, datosMecanicoModificar, RespuestaCliente } from '../models/usuarios.interface';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ export class AuthService {
   private URL = 'http://localhost:5000/api';
   constructor(private http: HttpClient, private router: Router) { }
 
-  obtenerReparaciones() {
+  obtenerReparaciones(): Observable<any[]> {
     return this.http.get<any[]>(this.URL + '/reparaciones');
   }
 

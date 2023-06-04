@@ -11,7 +11,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let administrativos of Administrativos | paginate: { itemsPerPage: 10, currentPage: page1, id: 'first' }">
+                  <tr *ngFor="let administrativos of Administrativos | paginate: { itemsPerPage: 2, currentPage: page1, id: 'first' }">
                     <td>{{ administrativos.nombre_usuario }}</td>
                     <td>{{ administrativos.nombre }}</td>
                     <td>{{ administrativos.apellido1 }}</td>
@@ -25,7 +25,7 @@
                   </tr>
                 </tbody>
               </table>
-              <pagination-controls (pageChange)="page1 = $event" id="first" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+              <pagination-controls class="text-center" (pageChange)="page1 = $event" id="first" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
         </div>
         
     
@@ -42,7 +42,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let mecanicos of Mecanicos | paginate: { itemsPerPage: 10, currentPage: page2, id: 'second' }">
+                  <tr *ngFor="let mecanicos of Mecanicos | paginate: { itemsPerPage: 2, currentPage: page2, id: 'second' }">
                     <td>{{ mecanicos.DNI }}</td>
                     <td>{{ mecanicos.nombre_usuario }}</td>
                     <td>{{ mecanicos.nombre }}</td>
@@ -59,7 +59,7 @@
                 </tbody>
                 
               </table>
-              <pagination-controls (pageChange)="page2 = $event" id="second" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+              <pagination-controls class="text-center" (pageChange)="page2 = $event" id="second" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
         </div>
     </div>
 

@@ -13,9 +13,9 @@ export class CorreoComponent implements OnInit {
 
   constructor(private auth: AuthService, private formBuilder: FormBuilder) {
     this.formulario = this.formBuilder.group({
-      correo: [''],
-      asunto: [''],
-      contenido: ['']
+      correo: ['', [Validators.required, Validators.email]],
+      asunto: ['', Validators.required],
+      contenido: ['', Validators.required]
     });
 
   }

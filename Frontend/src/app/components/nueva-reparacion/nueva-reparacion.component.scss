@@ -1,0 +1,9 @@
+#total {
+    background-color: #f8f8f8; // Cambia el color de fondo a uno que indique que es de solo lectura
+    cursor: not-allowed; // Cambia el cursor para indicar que no se puede editar
+  }
+
+  .label-required::after {
+    content: " *";
+    color: red;
+}

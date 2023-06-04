@@ -1,24 +1,40 @@
-<div class="d-flex justify-content-center">
-  <div class="scrollable-list">
-    <h2>Lista de Máquinas Reparadas</h2>
-    <button class="btn btn-primary">Generar Factura</button>
-    <div class="list-container">
-      
-      <a (click)="nuevaReparacion()">
-        <img class="float-end" src="assets/img/icons/google-plus.png">
-      </a>
-      <ul class="list-group">
-        <li *ngFor="let reparacion of reparaciones" class="list-group-item">
-          <input type="checkbox" class="float-start">
-          <p><strong>Número de Reparación:</strong> {{ reparacion.n_reparacion }}</p>
-          <p><strong>Fecha de Reparación:</strong> {{ reparacion.fecha_reparacion }}</p>
-          <p><strong>Referencia de la Máquina:</strong> {{ reparacion.id_maquina.referencia }}</p>
-          <p><strong>Mano de Obra:</strong> {{ reparacion.h_mano_de_obra }}</p>
-          <p><strong>Precio de Piezas:</strong> {{ reparacion.precio_piezas }}</p>
-          <p><strong>Total:</strong> {{ reparacion.total }}</p>
-          <img class="float-end" src="assets/img/icons/factura.png">
-        </li>
-      </ul>
+<div class="card">
+  <div class="card-header text-center text-warning fw-bold">
+    <h4>
+      Lista de Máquinas Reparadas
+    </h4>
+    <div class="text-end"><button class="btn btn-warning" (click)="generarFacturaPdf()">Generar Factura</button></div>
+  </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-center">
+      <div class="scrollable-list">
+        <div class="list-container">
+          <ul class="list-group">
+            <li *ngFor="let reparacion of reparaciones" class="list-group-item">
+              <input type="checkbox" [(ngModel)]="reparacion.seleccionada">
+              <div class="field flex-grow-1 mb-3 ms-2">
+                <strong>Número de Reparación:</strong> {{ reparacion.n_reparacion }}
+              </div>
+              <div class="field flex-grow-1 mb-3">
+                <strong>Fecha de Reparación:</strong> {{ reparacion.fecha_reparacion | date:'dd-MM-yyyy'}}
+              </div>
+              <div class="field flex-grow-1 mb-3">
+                <strong>Referencia de la Máquina:</strong> {{ reparacion.id_maquina.referencia }}
+              </div>
+              <div class="field flex-grow-1 mb-3">
+                <strong>Mano de Obra:</strong> {{ reparacion.h_mano_de_obra }}
+              </div>
+              <div class="field flex-grow-1 mb-3">
+                <strong>Precio de Piezas:</strong> {{ reparacion.precio_piezas }}
+              </div>
+              <div class="field flex-grow-1 mb-3">
+                <strong>Total:</strong> {{ reparacion.total }}
+              </div>
+              <img class="float-end" src="assets/img/icons/factura.png">
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
