@@ -19,6 +19,9 @@ import { AdministradorModificarAdministrativoComponent } from './components/admi
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { MaquinasReparadasComponent } from './components/maquinas-reparadas/maquinas-reparadas.component';
 import { NuevaReparacionComponent } from './components/nueva-reparacion/nueva-reparacion.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { EmpresaComponent } from './components/empresa/empresa.component';
+import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 
 const routes: Routes = [
   {
@@ -28,7 +31,10 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: '', component: InicioNoRegistradoComponent },
-      { path: 'contacto', component: ContactoComponent }
+      { path: 'contacto', component: ContactoComponent },
+      { path: 'productos', component: ProductosComponent },
+      { path: 'empresa', component: EmpresaComponent },
+      { path: 'detalle-producto/:nombre', component: DetalleProductoComponent }
     ]
   },{
     path: 'Administrador',

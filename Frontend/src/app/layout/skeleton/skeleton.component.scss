@@ -1,0 +1,20 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+  }
+
+  app-footer {
+    flex-shrink: 0;
+    height: 100px; 
+    margin-top: auto; 
+  }

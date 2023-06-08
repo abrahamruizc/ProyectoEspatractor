@@ -1,0 +1,11 @@
+<h2>Listado de productos</h2>
+<div class="row">
+  <div class="col-md-3" *ngFor="let producto of productos">
+    <div class="card mb-3" (click)="mostrarDetalle(producto)">
+      <img class="card-img-top" [src]="producto.rutaimg" alt="Imagen del producto">
+      <div class="card-body">
+        <h4 class="card-title">{{ producto.nombre }}</h4>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,6 +15,10 @@ export class AuthService {
   private URL = 'http://localhost:5000/api';
   constructor(private http: HttpClient, private router: Router) { }
 
+  obtenerProductos(): Observable<any[]> {
+    return this.http.get<any[]>(this.URL + '/productos');
+  }
+
   obtenerReparaciones(): Observable<any[]> {
     return this.http.get<any[]>(this.URL + '/reparaciones');
   }

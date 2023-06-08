@@ -1,0 +1,11 @@
+<div *ngIf="producto">
+  <h4>Nombre: {{ producto.nombre }}</h4>
+  <p>Descripción: {{ producto.descripcion }}</p>
+  <img [src]="producto.rutaimg" alt="Imagen del producto">
+  <button class="btn btn-primary" (click)="volverAProductos()">Volver a Productos</button>
+</div>
+
+<div *ngIf="!producto">
+  <p>No se encontró el producto.</p>
+  <button class="btn btn-primary" (click)="volverAProductos()">Volver a Productos</button>
+</div>

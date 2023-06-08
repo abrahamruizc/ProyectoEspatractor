@@ -38,6 +38,9 @@ import { CorreoComponent } from './components/correo/correo.component';
 import { MaquinasReparadasComponent } from './components/maquinas-reparadas/maquinas-reparadas.component';
 import { NuevaReparacionComponent } from './components/nueva-reparacion/nueva-reparacion.component';
 import { FooterUsuarioComponent } from './layout/footer-usuario/footer-usuario.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { EmpresaComponent } from './components/empresa/empresa.component';
+import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 
 
 
@@ -67,7 +70,10 @@ import { FooterUsuarioComponent } from './layout/footer-usuario/footer-usuario.c
     CorreoComponent,
     MaquinasReparadasComponent,
     NuevaReparacionComponent,
-    FooterUsuarioComponent
+    FooterUsuarioComponent,
+    ProductosComponent,
+    EmpresaComponent,
+    DetalleProductoComponent,
   ],
   imports: [
     BrowserModule,
