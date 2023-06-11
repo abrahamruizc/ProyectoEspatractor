@@ -1,7 +1,7 @@
-<h2>Listado de productos</h2>
-<div class="row">
+<h2 class="text-center mb-5">Listado de productos</h2>
+<div class="row bg-dark p-4 rounded">
   <div class="col-md-3" *ngFor="let producto of productos">
-    <div class="card mb-3" (click)="mostrarDetalle(producto)">
+    <div class="card mb-3 border-warning border-3 card-height" (click)="mostrarDetalle(producto)">
       <img class="card-img-top" [src]="producto.rutaimg" alt="Imagen del producto">
       <div class="card-body">
         <h4 class="card-title">{{ producto.nombre }}</h4>

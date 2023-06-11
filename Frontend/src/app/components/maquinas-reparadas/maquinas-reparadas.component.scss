@@ -1,17 +1,6 @@
-.scrollable-list {
-    max-width: 1000px; /* Ajusta el valor según tus necesidades */
-  }
-  
-  .list-container {
-    max-height: 650px; /* Ajusta el valor según tus necesidades */
-    overflow-y: auto;
-  }
-
   img{
     width: 38px;
   }
-
-.field {
-  display: inline-block;
-  margin-right: 10px;
-}
+  .custom-list-group {
+    max-height: 820px;
+  }

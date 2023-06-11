@@ -1,40 +1,61 @@
-<div class="card">
-  <div class="card-header text-center text-warning fw-bold">
-    <h4>
-      Lista de Máquinas Reparadas
-    </h4>
-    <div class="text-end"><button class="btn btn-warning" (click)="generarFacturaPdf()">Generar Factura</button></div>
+<div class="text-center fw-bold">
+  <h4>
+    Lista de Máquinas Reparadas
+  </h4>
+  <div class="text-end">
+    <button class="btn btn-warning" (click)="generarFacturaPdf()">Generar Factura</button>
   </div>
-  <div class="card-body">
-    <div class="d-flex justify-content-center">
-      <div class="scrollable-list">
-        <div class="list-container">
-          <ul class="list-group">
-            <li *ngFor="let reparacion of reparaciones" class="list-group-item">
-              <input type="checkbox" [(ngModel)]="reparacion.seleccionada">
-              <div class="field flex-grow-1 mb-3 ms-2">
+</div>
+
+<div class="list-group overflow-auto custom-list-group my-4 text-white">
+  <ul class="list-group">
+    <li *ngFor="let reparacion of reparaciones" class="list-group-item border border-dark mb-2">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-auto">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="reparacion.seleccionada">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
                 <strong>Número de Reparación:</strong> {{ reparacion.n_reparacion }}
               </div>
-              <div class="field flex-grow-1 mb-3">
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
                 <strong>Fecha de Reparación:</strong> {{ reparacion.fecha_reparacion | date:'dd-MM-yyyy'}}
               </div>
-              <div class="field flex-grow-1 mb-3">
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
                 <strong>Referencia de la Máquina:</strong> {{ reparacion.id_maquina.referencia }}
               </div>
-              <div class="field flex-grow-1 mb-3">
-                <strong>Mano de Obra:</strong> {{ reparacion.h_mano_de_obra }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <strong class="text-success">Mano de Obra:</strong> {{ reparacion.h_mano_de_obra }}
               </div>
-              <div class="field flex-grow-1 mb-3">
-                <strong>Precio de Piezas:</strong> {{ reparacion.precio_piezas }}
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <strong class="text-success">Precio de Piezas:</strong> {{ reparacion.precio_piezas }}
               </div>
-              <div class="field flex-grow-1 mb-3">
-                <strong>Total:</strong> {{ reparacion.total }}
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <strong class="text-success">Total:</strong> {{ reparacion.total }}
               </div>
-              <img class="float-end" src="assets/img/icons/factura.png">
-            </li>
-          </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="assets/img/icons/factura.png" style="width: 38px;">
         </div>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>
