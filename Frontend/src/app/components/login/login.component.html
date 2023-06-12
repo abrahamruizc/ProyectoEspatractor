@@ -1,22 +1,29 @@
-<div class="row">
-    <div class="col-md-4 mx-auto">
-        <div class="card">
-            <div class="card-header">
-                Login
-            </div>
-            <div class="card-body">
-                <form (submit)="login()">
-                    <div class="form-group">
-                        <input type="text" [(ngModel)]="user.nombre_usuario" name="Nombre Usuario" class="form-control" placeholder="Nombre Usuario" required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" [(ngModel)]="user.contrasena" name="Contraseña" class="form-control" placeholder="Contraseña" required>
-                    </div>
-                    <button class="btn btn-success btn-block">
-                        Login
-                    </button>
-                </form>
-            </div>
-        </div>
+<div class="col-md-4 mx-auto">
+    <div class="card">
+      <div class="card-header text-center text-warning fw-bold">
+        INICIO DE SESIÓN
+      </div>
+      <div class="card-body">
+        <form (submit)="login()" [formGroup]="loginForm">
+          <div class="form-group mt-4">
+            <input type="text" formControlName="nombre_usuario" class="form-control" placeholder="Nombre Usuario" required autofocus>
+            <small class="text-danger" *ngIf="loginForm.get('nombre_usuario')?.invalid && (loginForm.get('nombre_usuario')?.dirty || loginForm.get('nombre_usuario')?.touched)">
+              El nombre de usuario es obligatorio.
+            </small>
+          </div>
+          <div class="form-group mt-5">
+            <input type="password" formControlName="contrasena" class="form-control" placeholder="Contraseña" required>
+            <small class="text-danger" *ngIf="loginForm.get('contrasena')?.invalid && (loginForm.get('contrasena')?.dirty || loginForm.get('contrasena')?.touched)">
+              La contraseña es obligatoria.
+            </small>
+          </div>
+          <button class="btn btn-warning btn-block mt-5">
+            Login
+          </button>
+          <div class="text-center">
+            <small class="text-danger">{{ errorMensaje }}</small>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+  </div>

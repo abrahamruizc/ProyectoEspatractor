@@ -1,0 +1,17 @@
+.product-details {
+  .product-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 767px) {
+    .col-md-8 {
+      order: 2;
+      margin-bottom: 1.5rem;
+    }
+
+    .col-md-4 {
+      order: 1;
+    }
+  }
+}

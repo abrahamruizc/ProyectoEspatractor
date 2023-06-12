@@ -13,6 +13,8 @@ export class AuthGuard  {
   ) { }
 
   canActivate(): boolean {
+
+    
     if (this.authService.logged()) {
       return true;
     }

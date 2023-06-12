@@ -1,0 +1,21 @@
+.scrollable-list {
+    max-width: 1000px; 
+  }
+  
+  .list-container {
+    max-height: 580px; 
+    overflow-y: auto;
+  }
+
+  img{
+    width: 38px;
+}
+
+.field {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.custom-list-group {
+  max-height: 390px;
+}

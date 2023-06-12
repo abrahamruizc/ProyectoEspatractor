@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-header text-center text-warning fw-bold">
+    <h4>Datos de mecánico a modificar</h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="mb-5 mt-4"><strong>DNI:</strong> {{ usuarioSeleccionado.dni }}</p>
+        <p class="mb-5"><strong>Nombre de usuario:</strong> {{ usuarioSeleccionado.nombre_usuario }}</p>
+        <p class="mb-5"><strong>Nombre:</strong> {{ usuarioSeleccionado.nombre }}</p>
+        <p class="mb-5"><strong>Apellido 1:</strong> {{ usuarioSeleccionado.apellido1 }}</p>
+        <p class="mb-5"><strong>Apellido 2:</strong> {{ usuarioSeleccionado.apellido2 }}</p>
+      </div>
+      <div class="col-md-6">
+        <form [formGroup]="formulario" (ngSubmit)="submitFormulario()">
+          <div class="form-group">
+            <label for="dni">DNI</label>
+            <input type="text" class="form-control" id="dni" formControlName="dni">
+            <small class="text-danger"
+              *ngIf="formulario.get('dni')?.invalid && (formulario.get('dni')?.dirty || formulario.get('dni')?.touched)">
+              El DNI debe tener 8 dígitos seguidos de una letra mayúscula.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="nombre_usuario">Nombre de usuario</label>
+            <input type="text" class="form-control" id="nombre_usuario" formControlName="nombre_usuario">
+          </div>
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" pattern="^[a-zA-Z ]+$">
+            <small class="text-danger"
+              *ngIf="formulario.get('nombre')?.invalid && (formulario.get('nombre')?.dirty || formulario.get('nombre')?.touched)">
+              El nombre solo debe contener letras.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido1">Apellido 1</label>
+            <input type="text" class="form-control" id="apellido1" formControlName="apellido1" pattern="^[a-zA-Z ]+$">
+            <small class="text-danger"
+              *ngIf="formulario.get('apellido1')?.invalid && (formulario.get('apellido1')?.dirty || formulario.get('apellido1')?.touched)">
+              El apellido 1 solo debe contener letras.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido2">Apellido 2</label>
+            <input type="text" class="form-control" id="apellido2" formControlName="apellido2" pattern="^[a-zA-Z ]+$">
+            <small class="text-danger"
+              *ngIf="formulario.get('apellido2')?.invalid && (formulario.get('apellido2')?.dirty || formulario.get('apellido2')?.touched)">
+              El apellido 2 solo debe contener letras.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" class="form-control" id="contrasena" formControlName="contrasena">
+            <small class="text-danger" *ngIf="formulario.get('contrasena')?.invalid && formulario.get('contrasena')?.errors?.['pattern'] && (formulario.get('contrasena')?.dirty || formulario.get('contrasena')?.touched)">
+              La contraseña solo debe contener letras y números.
+            </small>
+          </div>
+
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="aceptoTerminos" formControlName="aceptoTerminos">
+            <label class="form-check-label" for="aceptoTerminos">Confirmar modificación</label>
+          </div>
+          <div class="form-group d-flex mt-5 justify-content-center">
+            <button type="submit" class="btn btn-warning mx-5"
+              [disabled]="!formulario.controls['aceptoTerminos'].value">Modificar Mecánico</button>
+            <button type="button" class="btn btn-danger mx-5" (click)="cancelar()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

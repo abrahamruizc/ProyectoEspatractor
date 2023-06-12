@@ -1,19 +1,10 @@
-<header class="d-flex flex-wrap align-items-center justify-content-center py-3 mb-4 border-bottom">
-    <div class="col-md-3 mb-2 mb-md-0">
-      <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-        <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-    </div>
+<header class="container-fluid d-flex flex-wrap justify-content-center py-3">
+  <a routerLink="/" class="text-dark d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+    <img class="w-25 " src="assets/img/header/Logo.png">
+    <span class="fs-1">ESPATRACTOR</span>
+  </a>
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-      <li><a href="#" class="nav-link px-2">Features</a></li>
-      <li><a href="#" class="nav-link px-2">Pricing</a></li>
-      <li><a href="#" class="nav-link px-2">FAQs</a></li>
-      <li><a href="#" class="nav-link px-2">About</a></li>
-    </ul>
-
-    <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary" onclick="location.href='/login'">Login</button>
-    </div>
+  <ul class="align-self-center nav nav-pills">
+    <li class="nav-item"><button type="button" class="fs-3 mx-5 rounded-pill text-white btn btn-warning" routerLink="/login">Empleados</button></li>
+  </ul>
 </header>

@@ -1,0 +1,34 @@
+<a (click)="nuevaReparacion()" class="float-end">
+  <img src="assets/img/icons/google-plus.png" alt="Google Plus">
+</a>
+
+<h4 class="mb-3">Lista de Máquinas Reparadas</h4>
+
+<div class="list-group overflow-auto custom-list-group my-4 text-white">
+  <div *ngFor="let reparacion of reparaciones" class="list-group-item border border-dark mb-3">
+    <div class="d-flex justify-content-between align-items-center border-bottom">
+      <h5 class="mb-1 pb-2">Número de Reparación: {{ reparacion.n_reparacion }}</h5>
+      <small>Mano de Obra: {{ reparacion.h_mano_de_obra }}</small>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 border-right">
+        <p class="mt-2 border-bottom pb-2"><strong>Kilómetros:</strong> {{ reparacion.id_maquina.kilometros }}</p>
+        <p class="border-bottom pb-2"><strong>Horas de Trabajo:</strong> {{ reparacion.id_maquina.horas_trabajo }}</p>
+        <p class="border-bottom pb-2"><strong>Marca:</strong> {{ reparacion.id_maquina.marca }}</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="mt-2 border-bottom pb-2"><strong>Año de Matriculación:</strong> {{ reparacion.id_maquina.ano_matriculacion | date:'dd-MM-yyyy' }}</p>
+        <p class="border-bottom pb-2"><strong>Nombre del Cliente:</strong> {{ reparacion.id_maquina.id_cliente.nombre }}</p>
+        <p class="border-bottom pb-2"><strong>Tipo:</strong> {{ reparacion.id_maquina.tipo }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 border-right">
+        <p class="border-bottom pb-2"><strong>Teléfono del Cliente:</strong> {{ reparacion.id_maquina.id_cliente.telefono }}</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="border-bottom pb-2"><strong>Correo del Cliente:</strong> {{ reparacion.id_maquina.id_cliente.correo_electronico }}</p>
+      </div>
+    </div>
+  </div>
+</div>

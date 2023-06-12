@@ -1,0 +1,8 @@
+.card {
+  height: 340px;
+
+  @media (max-width: 767px) {
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+}
