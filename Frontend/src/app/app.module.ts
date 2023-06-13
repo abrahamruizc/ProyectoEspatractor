@@ -42,6 +42,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 
+import { PathLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import { DetalleProductoComponent } from './components/detalle-producto/detalle-
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    { provide:PathLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

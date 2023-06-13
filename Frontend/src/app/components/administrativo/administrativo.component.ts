@@ -119,15 +119,15 @@ export class AdministrativoComponent {
                 body: [
                   [
                     { text: 'Mano de Obra:', bold: true },
-                    { text: reparacion.h_mano_de_obra, margin: [0, 5, 0, 5] }
+                    { text: reparacion.h_mano_de_obra + " horas", margin: [0, 5, 0, 5] }
                   ],
                   [
                     { text: 'Precio de Piezas:', bold: true },
-                    { text: reparacion.precio_piezas, margin: [0, 5, 0, 5] }
+                    { text: reparacion.precio_piezas + " €", margin: [0, 5, 0, 5] }
                   ],
                   [
                     { text: 'Total:', bold: true },
-                    { text: reparacion.total, margin: [0, 5, 0, 5] }
+                    { text: reparacion.total + " €", margin: [0, 5, 0, 5] }
                   ]
                 ]
               }
