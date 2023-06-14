@@ -41,22 +41,6 @@ router.post('/crearCliente', verifyToken, async (req, res) => {
   }
 });
 
-// router.get('/buscarCliente/:telefono', verifyToken, async (req, res) => {
-//   try {
-//     const telefono = req.params.telefono;
-
-//     const cliente = await Cliente.findOne({ telefono });
-//     if (!cliente) {
-//       return res.status(404).json({ message: 'No se encontró ningún cliente con ese número de teléfono' });
-//     }
-
-//     res.status(200).json({ clienteId: cliente._id });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Error al buscar el cliente' });
-//   }
-// });
-
 async function verifyToken(req, res, next) {
     try {
         if (!req.headers.authorization) {

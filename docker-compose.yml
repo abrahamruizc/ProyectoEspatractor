@@ -1,17 +1,17 @@
-version: '3' # specify docker-compose version
+version: '3' 
 
-# Define the services/containers to be run
+
 services:
-  express: #name of the second service
+  express: 
     build: 
-      context: ./Backend # specify the directory of the Dockerfile
+      context: ./Backend
       dockerfile: Dockerfile
     ports:
-      - "5000:5000" #specify ports forewarding
+      - "5000:5000"
 
   angular:
     hostname: localhost
-    #container_name: angular-app
+    
     build:     
       context: ./Frontend
       dockerfile: Dockerfile
